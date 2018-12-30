@@ -4,8 +4,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class DisplayWindow extends Stage {
+    private Label label;
     public DisplayWindow() {
-        Label label = new Label("Display Ticker Data");
+        if (UrlData.validation) {
+            label = new Label("Display Ticker Data");
+        } else {
+            label = new Label("Invalid Input");
+        }
         StackPane secondPane = new StackPane(label);
         Scene secondScene = new Scene(secondPane, 300, 200);
         this.setScene(secondScene);

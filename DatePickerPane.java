@@ -84,6 +84,9 @@ public class DatePickerPane extends FlowPane {
                             setDisable(true);
                             setStyle("-fx-background-color: #ffc0cb;");
                         }
+                        if (startDatePicker.getValue() != null) {
+                            UrlData.startDate = startDatePicker.getValue().format(DateTimeFormatter.ofPattern(pattern));
+                        }
                     }
                 };
             }
@@ -106,6 +109,9 @@ public class DatePickerPane extends FlowPane {
                         if (item.isAfter(LocalDate.now())) {
                             setDisable(true);
                             setStyle("-fx-background-color: #ffc0cb;");
+                        }
+                        if (endDatePicker.getValue() != null) {
+                            UrlData.endDate = endDatePicker.getValue().format(DateTimeFormatter.ofPattern(pattern));
                         }
                     }
                 };

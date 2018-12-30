@@ -23,7 +23,19 @@ public class TickerSelectPane extends FlowPane {
             public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
                 System.out.println("old " + oldValue);
                 System.out.println("new " + newValue);
+                UrlData.ticker = parseTicker(newValue.toString());
             }
         });
+    }
+
+    private String parseTicker(String val) {
+        String ticker = "";
+        for (int i = 0; i < val.length(); i++) {
+            if (val.substring(i, i + 1).equals(" ")) {
+                ticker = val.substring(0, i).trim();
+                break;
+            }
+        }
+        return ticker;
     }
 }

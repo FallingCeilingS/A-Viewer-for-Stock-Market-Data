@@ -1,6 +1,4 @@
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -19,6 +17,8 @@ public class SubmitPane extends FlowPane {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println("clicked");
+
+                UrlData.setUrl();
 
                 submitButton.setDisable(true);
 
