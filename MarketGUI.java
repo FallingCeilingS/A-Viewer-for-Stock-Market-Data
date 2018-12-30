@@ -1,8 +1,11 @@
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -23,11 +26,19 @@ public class MarketGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        StackPane root = new StackPane();
+        GridPane root = new GridPane();
+        root.setAlignment(Pos.CENTER);
+        root.setHgap(10);
+        root.setVgap(10);
+        root.setPadding(new Insets(25, 25, 25, 25));
         Scene scene = new Scene(root, 300, 250);
 
+        FlowPane tickerSelectPane = new TickerSelectPane();
+        root.add(tickerSelectPane, 0, 0);
+
         FlowPane submitPane = new SubmitPane();
-        root.getChildren().add(submitPane);
+        root.add(submitPane, 0, 2);
+        submitPane.setAlignment(Pos.CENTER);
 
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
