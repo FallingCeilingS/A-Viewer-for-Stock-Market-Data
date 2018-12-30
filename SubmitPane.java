@@ -13,6 +13,8 @@ public class SubmitPane extends FlowPane {
     public SubmitPane() {
         submitButton = new Button();
         submitButton.setText("Submit");
+        this.getChildren().add(submitButton);
+
         submitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -31,7 +33,5 @@ public class SubmitPane extends FlowPane {
                 });
             }
         });
-
-        this.getChildren().add(submitButton);
     }
 }

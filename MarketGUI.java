@@ -6,7 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -36,11 +35,14 @@ public class MarketGUI extends Application {
         FlowPane tickerSelectPane = new TickerSelectPane();
         root.add(tickerSelectPane, 0, 0);
 
+        FlowPane datePickerPane = new DatePickerPane();
+        root.add(datePickerPane, 0, 2);
+
         FlowPane submitPane = new SubmitPane();
-        root.add(submitPane, 0, 2);
+        root.add(submitPane, 0, 4);
         submitPane.setAlignment(Pos.CENTER);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Market GUI");
         primaryStage.setScene(scene);
         primaryStage.show();
 
