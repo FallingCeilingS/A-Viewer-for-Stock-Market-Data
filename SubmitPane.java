@@ -20,6 +20,7 @@ public class SubmitPane extends FlowPane {
 
                 UrlData.setValidation();
                 UrlData.setUrl();
+                UrlData.saveUrlAs();
 
                 submitButton.setDisable(true);
 
