@@ -18,6 +18,7 @@ public class SubmitPane extends FlowPane {
             public void handle(MouseEvent event) {
                 System.out.println("clicked");
 
+                UrlData.setValidation();
                 UrlData.setUrl();
 
                 submitButton.setDisable(true);

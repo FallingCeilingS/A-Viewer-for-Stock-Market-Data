@@ -9,7 +9,7 @@ public class DisplayWindow extends Stage {
         if (UrlData.validation) {
             label = new Label("Display Ticker Data");
         } else {
-            label = new Label("Invalid Input");
+            label = new Label(UrlData.errMsg);
         }
         StackPane secondPane = new StackPane(label);
         Scene secondScene = new Scene(secondPane, 300, 200);

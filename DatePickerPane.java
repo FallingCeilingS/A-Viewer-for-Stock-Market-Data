@@ -25,6 +25,9 @@ public class DatePickerPane extends FlowPane {
         this.getChildren().add(labelEnd);
         this.getChildren().add(endDatePicker);
 
+        startDatePicker.setEditable(false);
+        endDatePicker.setEditable(false);
+
         setStringConverter();
         setDateConverter();
         setPromptText();
