@@ -9,11 +9,12 @@ public class DisplayWindow extends Stage {
 
     public DisplayWindow() {
         if (UrlData.validation) {
-            label = new Label("Display Ticker Data");
+            label = new Label("Display Ticker Data\n" + UrlData.ticker);
+            CsvData.readFile();
             width = 600;
             height = 400;
         } else {
-            label = new Label("Error:\n" + UrlData.errMsg);
+            label = new Label("Error!\n" + UrlData.errMsg);
             width = 300;
             height = 200;
         }

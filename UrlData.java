@@ -17,11 +17,23 @@ public class UrlData {
     public static String errMsg = "";
 
     public static File file;
+    public static String filename = "HistoricalPrices.csv";
+
+    private static String parseTicker(String val) {
+        String ticker = "";
+        for (int i = 0; i < val.length(); i++) {
+            if (val.substring(i, i + 1).equals(" ")) {
+                ticker = val.substring(0, i).trim();
+                break;
+            }
+        }
+        return ticker;
+    }
 
     public static void setUrl() {
        if (ticker != null && startDate != null && endDate != null) {
            validation = true;
-           url = url1 + ticker + url2 + startDate + url3 + endDate;
+           url = url1 + parseTicker(ticker) + url2 + startDate + url3 + endDate;
            System.out.println(url);
        }
     }
@@ -69,7 +81,7 @@ public class UrlData {
 
                 inputStream = httpURLConnection.getInputStream();
                 BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-                fileOutputStream = new FileOutputStream(System.getProperty("user.dir") + "/" + "HistoricalPrices.csv");
+                fileOutputStream = new FileOutputStream(System.getProperty("user.dir") + "/" + filename);
                 BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 
                 byte[] bytes = new byte[4096];
@@ -79,6 +91,7 @@ public class UrlData {
                     bufferedOutputStream.write(bytes, 0, length);
                     length = bufferedInputStream.read(bytes);
                 }
+
                 bufferedOutputStream.close();
                 bufferedInputStream.close();
                 httpURLConnection.disconnect();
