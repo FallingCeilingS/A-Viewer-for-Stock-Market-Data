@@ -1,7 +1,7 @@
 import javafx.scene.chart.*;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 
-public class MainChartPane extends FlowPane {
+public class MainChartPane extends StackPane {
     public MainChartPane(String title) {
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -16,6 +16,11 @@ public class MainChartPane extends FlowPane {
             series.getData().add(new XYChart.Data<String, Number>(dailyTickerData.getDateString(), dailyTickerData.getClose()));
         }
         lineChart.getData().addAll(series);
+
+//        lineChart.setMinWidth(600);
+//        lineChart.setMinHeight(400);
+//        lineChart.prefWidthProperty().bind(this.widthProperty());
+//        lineChart.prefHeightProperty().bind(this.heightProperty());
 
         this.getChildren().add(lineChart);
     }
