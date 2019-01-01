@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DailyTickerData implements Comparable<DailyTickerData> {
-    public String date;
-    public Date parsedDate;
+    private String date;
+    private Date parsedDate;
     private double open, high, low, close;
     private long volume;
 
@@ -19,6 +19,14 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
         this.low = Double.parseDouble(item[3].trim());
         this.close = Double.parseDouble(item[4].trim());
         this.volume = Long.parseLong(item[5].trim());
+    }
+
+    public String getDateString() {
+        return this.date;
+    }
+
+    public Double getClose() {
+        return this.close;
     }
 
     @Override
