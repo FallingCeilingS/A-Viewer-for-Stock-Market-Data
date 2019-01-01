@@ -5,8 +5,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
-
 public class DisplayWindow extends Stage {
     private Label label;
     private int width, height;

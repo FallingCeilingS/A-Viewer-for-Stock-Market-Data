@@ -25,8 +25,24 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
         return this.date;
     }
 
+    public Double getOpen() {
+        return this.open;
+    }
+
+    public Double getLow() {
+        return this.low;
+    }
+
+    public Double getHigh() {
+        return this.high;
+    }
+
     public Double getClose() {
         return this.close;
+    }
+
+    public Long getVolume() {
+        return this.volume;
     }
 
     @Override
