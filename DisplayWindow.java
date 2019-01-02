@@ -11,12 +11,13 @@ public class DisplayWindow extends Stage {
     GridPane secondPane;
 
     public DisplayWindow() {
+        secondPane = new GridPane();
+        secondPane.setAlignment(Pos.CENTER);
+
         if (UrlData.validation) {
             CsvData.readFile();
             width = 600;
             height = 400;
-            secondPane = new GridPane();
-            secondPane.setAlignment(Pos.CENTER);
 
             if (CsvData.TickerData.isEmpty()) {
                 label = new Label("No Data to Display in Selected Date Range!");
@@ -39,6 +40,7 @@ public class DisplayWindow extends Stage {
             height = 200;
             secondPane.getChildren().add(label);
         }
+
         Scene secondScene = new Scene(secondPane, width, height);
 
         this.setScene(secondScene);
