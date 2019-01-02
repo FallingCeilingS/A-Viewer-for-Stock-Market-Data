@@ -25,4 +25,28 @@ public class CsvData {
             e.printStackTrace();
         }
     }
+
+    public static Double setLowerBound() {
+        double result = TickerData.iterator().next().getLow();
+        for (DailyTickerData dailyTickerData : TickerData) {
+            if (dailyTickerData.getLow() < result) {
+                result = dailyTickerData.getLow();
+            }
+        }
+        result = Math.round(result - 1);
+
+        return result;
+    }
+
+    public static Double setUpperBound() {
+        double result = TickerData.iterator().next().getHigh();
+        for (DailyTickerData dailyTickerData : TickerData) {
+            if (dailyTickerData.getHigh() > result) {
+                result = dailyTickerData.getHigh();
+            }
+        }
+        result = Math.round(result + 1);
+
+        return result;
+    }
 }
