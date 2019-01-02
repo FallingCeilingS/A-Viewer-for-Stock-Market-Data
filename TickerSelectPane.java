@@ -12,7 +12,7 @@ public class TickerSelectPane extends FlowPane {
         TickerOptions.addOptions();
         String[] sortedTickers = TickerOptions.iterOptions();
         choiceBox.setItems(FXCollections.observableArrayList(
-                sortedTickers
+                (Object[]) sortedTickers
         ));
 
         this.getChildren().add(label);
