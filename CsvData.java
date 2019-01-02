@@ -18,6 +18,7 @@ public class CsvData {
                 TickerData.add(dailyTickerData);
             }
             System.out.println(TickerData.isEmpty());
+            System.out.println(TickerData.size());
             for (DailyTickerData d : TickerData) {
                 System.out.print(d.getDateString() + "\n");
             }
@@ -33,7 +34,7 @@ public class CsvData {
                 result = dailyTickerData.getLow();
             }
         }
-        result = Math.round(result - 1);
+        result = Math.round(result - 1) + 0.5;
 
         return result;
     }
@@ -45,7 +46,7 @@ public class CsvData {
                 result = dailyTickerData.getHigh();
             }
         }
-        result = Math.round(result + 1);
+        result = Math.round(result + 1) - 0.5;
 
         return result;
     }

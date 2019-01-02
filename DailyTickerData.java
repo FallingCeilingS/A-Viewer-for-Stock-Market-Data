@@ -8,6 +8,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
     private Date parsedDate;
     private double open, high, low, close;
     private long volume;
+    private boolean isIncrease;
 
     public DailyTickerData(String[] item) throws ParseException {
         this.date = item[0].trim();
@@ -19,6 +20,9 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
         this.low = Double.parseDouble(item[3].trim());
         this.close = Double.parseDouble(item[4].trim());
         this.volume = Long.parseLong(item[5].trim());
+        if (this.close - this.open > 0) {
+            this.isIncrease = true;
+        }
     }
 
     public String getDateString() {
@@ -43,6 +47,10 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     public Long getVolume() {
         return this.volume;
+    }
+
+    public boolean getIsIncrease() {
+        return this.isIncrease;
     }
 
     @Override

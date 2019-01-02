@@ -84,10 +84,10 @@ public class UrlData {
                 fileOutputStream = new FileOutputStream(System.getProperty("user.dir") + "/" + filename);
                 BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 
-                byte[] bytes = new byte[4096];
+                byte[] bytes = new byte[1024];
                 int length = bufferedInputStream.read(bytes);
 
-                while (length != -1) {
+                while (!Thread.interrupted() && length != -1) {
                     bufferedOutputStream.write(bytes, 0, length);
                     length = bufferedInputStream.read(bytes);
                 }

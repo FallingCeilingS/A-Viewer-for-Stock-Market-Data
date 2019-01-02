@@ -2,6 +2,7 @@ import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.layout.StackPane;
 
+import java.util.Iterator;
 import java.util.Set;
 
 public class MainChartPane extends StackPane {
@@ -12,12 +13,13 @@ public class MainChartPane extends StackPane {
         stackedBarChart.setTitle(title);
         xAxis.setLabel("Date");
         yAxis.setLabel("Price");
-        xAxis.setAutoRanging(true);
+//        xAxis.setAutoRanging(true);
         yAxis.setAutoRanging(false);
         yAxis.setForceZeroInRange(false);
         yAxis.setLowerBound(CsvData.setLowerBound());
         yAxis.setUpperBound(CsvData.setUpperBound());
         stackedBarChart.getYAxis().setTickLabelRotation(270);
+        stackedBarChart.setCategoryGap(0);
 
         XYChart.Series lowSeries = new XYChart.Series();
         lowSeries.setName("Low");
@@ -34,23 +36,32 @@ public class MainChartPane extends StackPane {
         stackedBarChart.getData().add(lowSeries);
         stackedBarChart.getData().add(highSeries);
 
-        Set<Node> lineNodes = stackedBarChart.lookupAll(".default-color0.chart-bar");
-        for (Node node : lineNodes) {
-            node.setStyle("-fx-bar-fill: blue");
+        Set<Node> bar0Nodes = stackedBarChart.lookupAll(".default-color0.chart-bar");
+        for (Node node : bar0Nodes) {
+            node.setStyle("-fx-bar-fill: white");
             node.setStyle("visibility: hidden");
         }
 
-        Set<Node> legendNodes = stackedBarChart.lookupAll(".chart-legend");
-        for (Node node : legendNodes) {
+        Set<Node> bar1Nodes = stackedBarChart.lookupAll(".default-color1.chart-bar");
+        Iterator<DailyTickerData> iterator = CsvData.TickerData.iterator();
+        for (Node node : bar1Nodes) {
+            boolean isIncrease = iterator.next().getIsIncrease();
+            if (isIncrease) {
+                node.setStyle("-fx-bar-fill: #27ae60");
+            } else {
+                node.setStyle("-fx-bar-fill: #e74c3c");
+            }
+        }
+
+        Set<Node> legendNodes1 = stackedBarChart.lookupAll(".chart-legend");
+        for (Node node : legendNodes1) {
             node.setStyle("-fx-padding: 6px 300px 6px 6px");
         }
 //        lineChart.setMinWidth(600);
 //        lineChart.setMinHeight(400);
 
-//        lineChart.setAlternativeRowFillVisible(false);
-//        lineChart.setAlternativeColumnFillVisible(false);
-//        lineChart.setHorizontalGridLinesVisible(false);
-//        lineChart.setVerticalGridLinesVisible(false);
+
+
 //        lineChart.getXAxis().setVisible(false);
 //        lineChart.getYAxis().setVisible(false);
 //        lineChart.setOpacity(0);
@@ -59,6 +70,10 @@ public class MainChartPane extends StackPane {
         lineChart.setTitle(title);
         lineChart.getYAxis().setTickLabelRotation(270);
         lineChart.setCreateSymbols(false);
+        lineChart.setAlternativeRowFillVisible(false);
+        lineChart.setAlternativeColumnFillVisible(false);
+        lineChart.setHorizontalGridLinesVisible(false);
+        lineChart.setVerticalGridLinesVisible(false);
 
         XYChart.Series openSeries = new XYChart.Series();
         openSeries.setName("Open");
@@ -80,8 +95,20 @@ public class MainChartPane extends StackPane {
             node.setStyle("-fx-background-color: transparent");
         }
 
-//        this.getChildren().add(stackedBarChart);
-//        this.getChildren().add(lineChart);
+        Set<Node> line0Nodes = lineChart.lookupAll(".default-color0.chart-series-line");
+        for (Node node : line0Nodes) {
+            double width = 3 / Math.log10(CsvData.TickerData.size());
+            StringBuilder style = new StringBuilder("-fx-stroke-width: " + width + "px;");
+            node.setStyle(style.toString() + "-fx-stroke: #bdc3c7");
+        }
+
+        Set<Node> line1Nodes = lineChart.lookupAll(".default-color1.chart-series-line");
+        for (Node node : line1Nodes) {
+            double width = 3 / Math.log10(CsvData.TickerData.size());
+            StringBuilder style = new StringBuilder("-fx-stroke-width: " + width + "px;");
+            node.setStyle(style.toString() + "-fx-stroke: #7f8c8d");
+        }
+
         this.getChildren().addAll(stackedBarChart, lineChart);
     }
 }
