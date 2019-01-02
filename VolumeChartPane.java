@@ -30,7 +30,7 @@ public class VolumeChartPane extends StackPane {
 
         Set<Node> lineNodes = areaChart.lookupAll(".default-color0.chart-series-area-line");
         for (Node node : lineNodes) {
-            double width = 3 / Math.log10(CsvData.TickerData.size());
+            double width = Math.round(3 / Math.log10(CsvData.TickerData.size()));
             StringBuilder style = new StringBuilder("-fx-stroke-width: " + width + "px;");
             node.setStyle(style + "-fx-stroke: #f39c12");
         }
@@ -39,6 +39,8 @@ public class VolumeChartPane extends StackPane {
         for (Node node : areaNodes) {
             node.setStyle("-fx-fill: #f1c40f");
         }
+
+        areaChart.setStyle("CHART_COLOR_1: #f39c12");
 
         this.getChildren().add(areaChart);
     }

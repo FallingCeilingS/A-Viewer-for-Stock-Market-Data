@@ -22,13 +22,13 @@ public class MainChartPane extends StackPane {
         stackedBarChart.setCategoryGap(0);
 
         XYChart.Series lowSeries = new XYChart.Series();
-        lowSeries.setName("Low");
+        lowSeries.setName("The Stock Rose");
         for (DailyTickerData dailyTickerData : CsvData.TickerData) {
             lowSeries.getData().add(new XYChart.Data<String, Number>(dailyTickerData.getDateString(), (dailyTickerData.getLow())));
         }
 
         XYChart.Series highSeries = new XYChart.Series();
-        highSeries.setName("High");
+        highSeries.setName("The Stock Fell");
         for (DailyTickerData dailyTickerData : CsvData.TickerData) {
             highSeries.getData().add(new XYChart.Data<String, Number>(dailyTickerData.getDateString(), (dailyTickerData.getHigh() - dailyTickerData.getLow())));
         }
@@ -53,17 +53,15 @@ public class MainChartPane extends StackPane {
             }
         }
 
-        Set<Node> legendNodes1 = stackedBarChart.lookupAll(".chart-legend");
-        for (Node node : legendNodes1) {
-            node.setStyle("-fx-padding: 6px 300px 6px 6px");
+        Set<Node> barLegendNodes = stackedBarChart.lookupAll(".chart-legend");
+        for (Node node : barLegendNodes) {
+            node.setStyle("-fx-translate-x: -50px");
         }
+
+        stackedBarChart.setStyle("CHART_COLOR_1: #27ae60 ; CHART_COLOR_2: #e74c3c");
 //        lineChart.setMinWidth(600);
 //        lineChart.setMinHeight(400);
 
-
-
-//        lineChart.getXAxis().setVisible(false);
-//        lineChart.getYAxis().setVisible(false);
 //        lineChart.setOpacity(0);
 
         LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
@@ -104,10 +102,17 @@ public class MainChartPane extends StackPane {
 
         Set<Node> line1Nodes = lineChart.lookupAll(".default-color1.chart-series-line");
         for (Node node : line1Nodes) {
-            double width = 3 / Math.log10(CsvData.TickerData.size());
+            double width = Math.round(3 / Math.log10(CsvData.TickerData.size()));
             StringBuilder style = new StringBuilder("-fx-stroke-width: " + width + "px;");
             node.setStyle(style.toString() + "-fx-stroke: #7f8c8d");
         }
+
+        Set<Node> lineLegendNodes = lineChart.lookupAll(".chart-legend");
+        for (Node node : lineLegendNodes) {
+            node.setStyle("-fx-translate-x: 150px");
+        }
+
+        lineChart.setStyle("CHART_COLOR_1: #bdc3c7 ; CHART_COLOR_2: #7f8c8d");
 
         this.getChildren().addAll(stackedBarChart, lineChart);
     }
