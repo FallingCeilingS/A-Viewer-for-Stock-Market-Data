@@ -67,7 +67,7 @@ public class MainChartPane extends StackPane {
         LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setTitle(title);
         lineChart.getYAxis().setTickLabelRotation(270);
-        lineChart.setCreateSymbols(false);
+//        lineChart.setCreateSymbols(false);
         lineChart.setAlternativeRowFillVisible(false);
         lineChart.setAlternativeColumnFillVisible(false);
         lineChart.setHorizontalGridLinesVisible(false);
@@ -113,6 +113,12 @@ public class MainChartPane extends StackPane {
         }
 
         lineChart.setStyle("CHART_COLOR_1: #bdc3c7 ; CHART_COLOR_2: #7f8c8d");
+
+        for (XYChart.Series<String, Number> s : lineChart.getData()) {
+            for (XYChart.Data<String, Number> d : s.getData()) {
+//                System.out.println(d.getNode());
+            }
+        }
 
         this.getChildren().addAll(stackedBarChart, lineChart);
     }

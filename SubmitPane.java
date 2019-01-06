@@ -26,11 +26,13 @@ public class SubmitPane extends FlowPane {
 
                 Stage secondStage = new DisplayWindow();
                 secondStage.show();
+                CsvData.show = true;
 
                 secondStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                     @Override
                     public void handle(WindowEvent event) {
                         submitButton.setDisable(false);
+                        CsvData.show = false;
                     }
                 });
             }

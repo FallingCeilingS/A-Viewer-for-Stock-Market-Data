@@ -9,6 +9,7 @@ public class DisplayWindow extends Stage {
     private Label label;
     private int width, height;
     GridPane secondPane;
+    private StackPane volumeChartPane;
 
     public DisplayWindow() {
         secondPane = new GridPane();
@@ -24,7 +25,7 @@ public class DisplayWindow extends Stage {
                 secondPane.getChildren().add(label);
             } else {
                 StackPane mainChartPane = new MainChartPane("Ticker Data - " + UrlData.ticker);
-                StackPane volumeChartPane = new VolumeChartPane("Volume Data - " + UrlData.ticker);
+                volumeChartPane = new VolumeChartPane("Volume Data - " + UrlData.ticker);
 
                 secondPane.add(mainChartPane, 0, 0);
                 secondPane.add(volumeChartPane, 0, 1);
