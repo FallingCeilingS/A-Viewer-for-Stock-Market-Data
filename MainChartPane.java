@@ -27,7 +27,6 @@ public class MainChartPane extends StackPane {
 
         setLowSeries();
         setHighSeries();
-
         stackedBarChart.getData().add(lowSeries);
         stackedBarChart.getData().add(highSeries);
 
@@ -39,7 +38,6 @@ public class MainChartPane extends StackPane {
 
         setOpenSeries();
         setCloseSeries();
-
         lineChart.getData().add(openSeries);
         lineChart.getData().add(closeSeries);
 
@@ -166,7 +164,7 @@ public class MainChartPane extends StackPane {
     private void setLineChartSymbol() {
         Set<Node> symbolNodes = lineChart.lookupAll(".chart-line-symbol");
         for (Node node : symbolNodes) {
-            double radius = Math.round(5 / Math.log10(CsvData.TickerData.size()));
+            double radius = Math.round(5.05 / Math.log10(CsvData.TickerData.size()));
             String style = "-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px";
             node.setStyle(style);
         }
@@ -224,7 +222,7 @@ public class MainChartPane extends StackPane {
                         }
                     });
                 }
-                
+
                 Tooltip.install(d.getNode(), tooltip);
                 ToolTipContent toolTipContent = (ToolTipContent) tooltip.getGraphic();
                 try {
