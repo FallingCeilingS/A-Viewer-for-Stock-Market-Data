@@ -1,5 +1,8 @@
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 import java.util.Iterator;
@@ -59,6 +62,13 @@ public class MainChartPane extends StackPane {
         }
 
         stackedBarChart.setStyle("CHART_COLOR_1: #27ae60 ; CHART_COLOR_2: #e74c3c");
+
+        for (XYChart.Series<String, Number> s : stackedBarChart.getData()) {
+            for (XYChart.Data<String, Number> d : s.getData()) {
+//                System.out.println(d.getNode());
+//                System.out.println(d.getYValue());
+            }
+        }
 //        lineChart.setMinWidth(600);
 //        lineChart.setMinHeight(400);
 
@@ -93,18 +103,11 @@ public class MainChartPane extends StackPane {
             node.setStyle("-fx-background-color: transparent");
         }
 
-        Set<Node> line0Nodes = lineChart.lookupAll(".default-color0.chart-series-line");
-        for (Node node : line0Nodes) {
+        Set<Node> lineNodes = lineChart.lookupAll(".chart-series-line");
+        for (Node node : lineNodes) {
             double width = 3 / Math.log10(CsvData.TickerData.size());
             StringBuilder style = new StringBuilder("-fx-stroke-width: " + width + "px;");
-            node.setStyle(style.toString() + "-fx-stroke: #bdc3c7");
-        }
-
-        Set<Node> line1Nodes = lineChart.lookupAll(".default-color1.chart-series-line");
-        for (Node node : line1Nodes) {
-            double width = Math.round(3 / Math.log10(CsvData.TickerData.size()));
-            StringBuilder style = new StringBuilder("-fx-stroke-width: " + width + "px;");
-            node.setStyle(style.toString() + "-fx-stroke: #7f8c8d");
+            node.setStyle(style.toString());
         }
 
         Set<Node> lineLegendNodes = lineChart.lookupAll(".chart-legend");
@@ -112,12 +115,74 @@ public class MainChartPane extends StackPane {
             node.setStyle("-fx-translate-x: 150px");
         }
 
+        Set<Node> symbolNodes = lineChart.lookupAll(".chart-line-symbol");
+        for (Node node : symbolNodes) {
+            double radius = Math.round(5 / Math.log10(CsvData.TickerData.size()));
+            StringBuilder style = new StringBuilder("-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px");
+            node.setStyle(style.toString());
+        }
+
         lineChart.setStyle("CHART_COLOR_1: #bdc3c7 ; CHART_COLOR_2: #7f8c8d");
 
+        int i = 1;
         for (XYChart.Series<String, Number> s : lineChart.getData()) {
             for (XYChart.Data<String, Number> d : s.getData()) {
-//                System.out.println(d.getNode());
+                System.out.println(d.getNode());
+                System.out.println(d.getYValue());
+                Tooltip tooltip = new Tooltip();
+                if (i <= 1) {
+                    tooltip.setGraphic(new ToolTipContent("OPEN:"));
+                    Tooltip.install(d.getNode(), tooltip);
+                    ToolTipContent toolTipContent = (ToolTipContent) tooltip.getGraphic();
+                    try {
+                        toolTipContent.update(d.getXValue(), d.getYValue());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    d.getNode().setOnMouseEntered(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            double radius = Math.round(5 / Math.log10(CsvData.TickerData.size()));
+                            StringBuilder style = new StringBuilder("-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px");
+                            d.getNode().setStyle("-fx-background-color: #95a5a6;" + style);
+                        }
+                    });
+                    d.getNode().setOnMouseExited(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            double radius = Math.round(5 / Math.log10(CsvData.TickerData.size()));
+                            StringBuilder style = new StringBuilder("-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px");
+                            d.getNode().setStyle("-fx-background-color: #bdc3c7, white;" + style);
+                        }
+                    });
+                } else {
+                    tooltip.setGraphic(new ToolTipContent("CLOSE:"));
+                    Tooltip.install(d.getNode(), tooltip);
+                    ToolTipContent toolTipContent = (ToolTipContent) tooltip.getGraphic();
+                    try {
+                        toolTipContent.update(d.getXValue(), d.getYValue());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    d.getNode().setOnMouseEntered(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            double radius = Math.round(5 / Math.log10(CsvData.TickerData.size()));
+                            StringBuilder style = new StringBuilder("-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px");
+                            d.getNode().setStyle("-fx-background-color: #34495e;" + style);
+                        }
+                    });
+                    d.getNode().setOnMouseExited(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            double radius = Math.round(5 / Math.log10(CsvData.TickerData.size()));
+                            StringBuilder style = new StringBuilder("-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px");
+                            d.getNode().setStyle("-fx-background-color: #7f8c8d, white;" + style);
+                        }
+                    });
+                }
             }
+            i = i + 1;
         }
 
         this.getChildren().addAll(stackedBarChart, lineChart);

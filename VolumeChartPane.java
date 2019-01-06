@@ -1,8 +1,10 @@
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 import java.util.Set;
@@ -74,17 +76,23 @@ public class VolumeChartPane extends StackPane {
         Set<Node> symbolNodes = lineChart.lookupAll(".default-color0.series0.chart-line-symbol");
         for (Node node : symbolNodes) {
             double radius = Math.round(5 / Math.log10(CsvData.TickerData.size()));
-            StringBuilder style = new StringBuilder("-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px");
-            node.setStyle("-fx-background-color: #e67e22, white;" + style);
+            String style = "-fx-background-radius: " + radius + "px; -fx-padding: " + radius + "px";
+            node.setStyle(style);
         }
 
         lineChart.setStyle("CHART_COLOR_1: #e67e22");
 
         for (XYChart.Series<String, Number> s : lineChart.getData()) {
             for (XYChart.Data<String, Number> d : s.getData()) {
-                Tooltip.install(d.getNode(), new Tooltip(
-                        d.getXValue().toString() + "\n" + d.getYValue()
-                ));
+                Tooltip tooltip = new Tooltip();
+                tooltip.setGraphic(new ToolTipContent("VOLUME:"));
+                Tooltip.install(d.getNode(), tooltip);
+                ToolTipContent toolTipContent = (ToolTipContent) tooltip.getGraphic();
+                try {
+                    toolTipContent.update(d.getXValue(), d.getYValue());
+                } catch (Exception e) {
+                    e.fillInStackTrace();
+                }
                 d.getNode().setOnMouseEntered(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {

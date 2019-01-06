@@ -24,7 +24,7 @@ public class DisplayWindow extends Stage {
                 label = new Label("No Data to Display in Selected Date Range!");
                 secondPane.getChildren().add(label);
             } else {
-                StackPane mainChartPane = new MainChartPane("Ticker Data - " + UrlData.ticker);
+                StackPane mainChartPane = new MainChartPane("Price Data - " + UrlData.ticker);
                 volumeChartPane = new VolumeChartPane("Volume Data - " + UrlData.ticker);
 
                 secondPane.add(mainChartPane, 0, 0);
