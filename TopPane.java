@@ -1,5 +1,6 @@
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -9,6 +10,8 @@ public class TopPane extends StackPane {
     public TopPane() {
         Button button = new Button("Show Diagram Description");
         this.getChildren().add(button);
+
+        Tooltip.install(button, new Tooltip("Click Here to Show Description (Explaination) of Diagram."));
 
         button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

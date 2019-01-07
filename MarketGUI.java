@@ -38,8 +38,8 @@ public class MarketGUI extends Application {
 
         primaryStage.setTitle("Market GUI");
         primaryStage.setScene(scene);
-        primaryStage.setMinWidth(300);
-        primaryStage.setMinHeight(250);
+        primaryStage.setMinWidth(320);
+        primaryStage.setMinHeight(300);
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
