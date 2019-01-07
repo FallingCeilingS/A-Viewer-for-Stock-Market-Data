@@ -1,6 +1,7 @@
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -20,6 +21,13 @@ public class DatePickerPane extends FlowPane {
         endDatePicker = new DatePicker();
         Label labelEnd = new Label("Select End Date: ");
 
+        labelStart.setMinWidth(120);
+        labelStart.setMinHeight(30);
+        startDatePicker.setMinWidth(250);
+        labelEnd.setMinWidth(120);
+        labelEnd.setMinHeight(30);
+        endDatePicker.setMinWidth(250);
+
         this.getChildren().add(labelStart);
         this.getChildren().add(startDatePicker);
         this.getChildren().add(labelEnd);
@@ -28,13 +36,15 @@ public class DatePickerPane extends FlowPane {
         startDatePicker.setEditable(false);
         endDatePicker.setEditable(false);
 
+        setStartDatePickerToolTip();
+        setEndDatePickerToolTip();
+
         setStringConverter();
         setDateConverter();
         setPromptText();
 
         setStartDateCellFactory();
         setEndDateCellFactory();
-
     }
 
     private void setStringConverter() {
@@ -81,11 +91,11 @@ public class DatePickerPane extends FlowPane {
                         super.updateItem(item, empty);
                         if (endDatePicker.getValue() != null && item.isAfter(endDatePicker.getValue())) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #3498db;");
                         }
                         if (item.isAfter(LocalDate.now())) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #3498db;");
                         }
                         if (startDatePicker.getValue() != null) {
                             UrlData.startDate = startDatePicker.getValue().format(DateTimeFormatter.ofPattern(pattern));
@@ -107,11 +117,11 @@ public class DatePickerPane extends FlowPane {
                         super.updateItem(item, empty);
                         if (startDatePicker.getValue() != null && item.isBefore(startDatePicker.getValue())) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #3498db;");
                         }
                         if (item.isAfter(LocalDate.now())) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #3498db;");
                         }
                         if (endDatePicker.getValue() != null) {
                             UrlData.endDate = endDatePicker.getValue().format(DateTimeFormatter.ofPattern(pattern));
@@ -121,5 +131,15 @@ public class DatePickerPane extends FlowPane {
             }
         };
         endDatePicker.setDayCellFactory(endDayCellFactory);
+    }
+
+    private void setStartDatePickerToolTip() {
+        Tooltip.install(startDatePicker, new Tooltip("Click Here to Select a Start Date.\n" +
+                "Note: You CANNOT Select a Date AFTER TODAY or the Selected END DATE!"));
+    }
+
+    private void setEndDatePickerToolTip() {
+        Tooltip.install(endDatePicker, new Tooltip("Click Here to Select an End Date.\n" +
+                "Note: You CANNOT Select a Date AFTER TODAY or BEFORE the Selected START DATE!"));
     }
 }

@@ -5,7 +5,6 @@ import java.util.TreeSet;
 
 public class CsvData {
     public static Set<DailyTickerData> TickerData;
-    public static boolean show;
 
     public static void readFile() {
         try {

@@ -9,16 +9,10 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import javax.swing.*;
-
 public class MarketGUI extends Application {
 
     public static void main(String[] args) {
         System.out.println("execution");
-
-//        JFrame inputFrame = new InputDataFrame();
-//        inputFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        inputFrame.setVisible(true);
 
         launch(args);
     }
@@ -30,7 +24,7 @@ public class MarketGUI extends Application {
         root.setHgap(10);
         root.setVgap(10);
         root.setPadding(new Insets(25, 25, 25, 25));
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 600, 250);
 
         FlowPane tickerSelectPane = new TickerSelectPane();
         root.add(tickerSelectPane, 0, 0);
@@ -44,6 +38,8 @@ public class MarketGUI extends Application {
 
         primaryStage.setTitle("Market GUI");
         primaryStage.setScene(scene);
+        primaryStage.setMinWidth(300);
+        primaryStage.setMinHeight(250);
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

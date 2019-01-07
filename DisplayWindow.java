@@ -6,36 +6,52 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class DisplayWindow extends Stage {
+    private String title;
     private Label label;
     private int width, height;
-    GridPane secondPane;
-    private StackPane volumeChartPane;
 
     public DisplayWindow() {
-        secondPane = new GridPane();
+        GridPane secondPane = new GridPane();
         secondPane.setAlignment(Pos.CENTER);
 
         if (UrlData.validation) {
             CsvData.readFile();
-            width = 600;
-            height = 400;
-
             if (CsvData.TickerData.isEmpty()) {
-                label = new Label("No Data to Display in Selected Date Range!");
+                title = "Empty DATA";
+
+                width = 720;
+                height = 540;
+
+                label = new Label(
+                        "No Data to Display in Selected Date Range!\n" +
+                        "Please CLOSE this WINDOW and TRY AGAIN!"
+                );
                 secondPane.getChildren().add(label);
             } else {
-                StackPane mainChartPane = new MainChartPane("Price Data - " + UrlData.ticker);
-                volumeChartPane = new VolumeChartPane("Volume Data - " + UrlData.ticker);
+                title = "Display Stock DATA";
 
-                secondPane.add(mainChartPane, 0, 0);
-                secondPane.add(volumeChartPane, 0, 1);
+                width = 1024;
+                height = 768;
+
+                StackPane topPane = new TopPane();
+                StackPane mainChartPane = new MainChartPane("Price Data - " + UrlData.ticker);
+                StackPane volumeChartPane = new VolumeChartPane("Volume Data - " + UrlData.ticker);
+
+                secondPane.add(topPane, 0, 0);
+                secondPane.add(mainChartPane, 0, 1);
+                secondPane.add(volumeChartPane, 0, 2);
 
 //                mainChartPane.setStyle("-fx-border-color: black");
 //                volumeChartPane.setStyle("-fx-border-color: black");
                 mainChartPane.prefWidthProperty().bind(secondPane.widthProperty());
                 volumeChartPane.prefWidthProperty().bind(secondPane.heightProperty());
+
+                this.setMinWidth(width);
+                this.setMinHeight(height);
             }
         } else {
+            title = "Invalid message";
+
             label = new Label("Error!\n" + UrlData.errMsg);
             width = 300;
             height = 200;
@@ -44,6 +60,7 @@ public class DisplayWindow extends Stage {
 
         Scene secondScene = new Scene(secondPane, width, height);
 
+        this.setTitle(title);
         this.setScene(secondScene);
     }
 }
