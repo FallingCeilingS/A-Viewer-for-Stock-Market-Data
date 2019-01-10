@@ -55,7 +55,7 @@ public class MainChartPane extends StackPane {
     }
 
     private void setyAxis() {
-        yAxis.setLabel("Price");
+        yAxis.setLabel("Price (USD)");
         yAxis.setAutoRanging(false);
         yAxis.setForceZeroInRange(false);
         yAxis.setLowerBound(CsvData.setLowerBound());
@@ -70,7 +70,7 @@ public class MainChartPane extends StackPane {
 
     private void setLowSeries() {
         lowSeries = new XYChart.Series();
-        lowSeries.setName("The Stock Rose");
+        lowSeries.setName("The Stock Rose  (High - Top, Low - Bottom)");
         for (DailyTickerData dailyTickerData : CsvData.TickerData) {
             lowSeries.getData().add(
                     new XYChart.Data<String, Number>(dailyTickerData.getDateString(), (dailyTickerData.getLow()))
@@ -80,7 +80,7 @@ public class MainChartPane extends StackPane {
 
     private void setHighSeries() {
         highSeries = new XYChart.Series();
-        highSeries.setName("The Stock Fell");
+        highSeries.setName("The Stock Fell  (High - Top, Low - Bottom)");
         for (DailyTickerData dailyTickerData : CsvData.TickerData) {
             highSeries.getData().add(
                     new XYChart.Data<String, Number>(
@@ -111,7 +111,7 @@ public class MainChartPane extends StackPane {
     private void setBarLegend() {
         Set<Node> barLegendNodes = stackedBarChart.lookupAll(".chart-legend");
         for (Node node : barLegendNodes) {
-            node.setStyle("-fx-translate-x: -50px");
+            node.setStyle("-fx-translate-x: -80px");
         }
         stackedBarChart.setStyle("CHART_COLOR_1: #27ae60 ; CHART_COLOR_2: #e74c3c");
     }
@@ -173,7 +173,7 @@ public class MainChartPane extends StackPane {
     private void setLineChartLegend() {
         Set<Node> lineLegendNodes = lineChart.lookupAll(".chart-legend");
         for (Node node : lineLegendNodes) {
-            node.setStyle("-fx-translate-x: 150px");
+            node.setStyle("-fx-translate-x: 300px");
         }
         lineChart.setStyle("CHART_COLOR_1: #bdc3c7 ; CHART_COLOR_2: #7f8c8d");
     }

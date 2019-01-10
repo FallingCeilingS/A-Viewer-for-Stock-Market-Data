@@ -24,7 +24,7 @@ public class MarketGUI extends Application {
         root.setHgap(10);
         root.setVgap(10);
         root.setPadding(new Insets(25, 25, 25, 25));
-        Scene scene = new Scene(root, 600, 250);
+        Scene scene = new Scene(root, 580, 300);
 
         FlowPane tickerSelectPane = new TickerSelectPane();
         root.add(tickerSelectPane, 0, 0);
@@ -38,7 +38,7 @@ public class MarketGUI extends Application {
 
         primaryStage.setTitle("Market GUI");
         primaryStage.setScene(scene);
-        primaryStage.setMinWidth(320);
+        primaryStage.setMinWidth(550);
         primaryStage.setMinHeight(300);
         primaryStage.show();
 

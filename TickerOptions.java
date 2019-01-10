@@ -3,8 +3,16 @@ import java.util.TreeSet;
 
 public class TickerOptions {
     private static String[] tickers = {
-            "FOX - 21st Century Fox Inc. Cl B",
-            "AAPL - Apple Inc."
+            "FOX (U.S.: Nasdaq) - 21st Century Fox Inc. Cl B",
+            "AAPL (U.S.: Nasdaq) - Apple Inc.",
+            "MSFT (U.S.: Nasdaq) - Microsoft Corp.",
+            "AMZN (U.S.: Nasdaq) - Amazon.com Inc.",
+            "GOOGL (U.S.: Nasdaq) - Alphabet Inc. Cl A",
+            "TWTR (U.S.: NYSE) - Twitter Inc.",
+            "SNE (U.S.: NYSE) - Sony Corp. ADR",
+            "DIS (U.S.: NYSE) - Walt Disney Co.",
+            "F (U.S.: NYSE) - Ford Motor Co.",
+            "RYCEY (U.S.: OTC) - Rolls-Royce Holdings PLC ADR"
     };
     public static Set<Ticker> tickerOptions = new TreeSet<>();
 

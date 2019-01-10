@@ -23,10 +23,10 @@ public class DatePickerPane extends FlowPane {
 
         labelStart.setMinWidth(120);
         labelStart.setMinHeight(30);
-        startDatePicker.setMinWidth(250);
+        startDatePicker.setMinWidth(240);
         labelEnd.setMinWidth(120);
         labelEnd.setMinHeight(30);
-        endDatePicker.setMinWidth(250);
+        endDatePicker.setMinWidth(240);
 
         this.getChildren().add(labelStart);
         this.getChildren().add(startDatePicker);
