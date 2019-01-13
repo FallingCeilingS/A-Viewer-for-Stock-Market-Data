@@ -23,6 +23,9 @@ public class SubmitPane extends FlowPane {
         submitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                // delete the exist *.csv file
+                // in case that there is no Internet connection, the program will parse the exist file
+                CsvData.deleteFile();
                 // validate whether the user input is valid for retrieving data
                 UrlData.setValidation();
                 // if the user's selection is valid, the program will set an URL for downloading data

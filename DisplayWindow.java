@@ -24,7 +24,8 @@ public class DisplayWindow extends Stage {
                 height = 540;
 
                 label = new Label(
-                        "No Data to Display in Selected Date Range!\n" +
+                        "No Data to Display! Due to: \n" +
+                        UrlData.errMsg +
                         "Please CLOSE this WINDOW and TRY AGAIN!"
                 );
                 secondPane.getChildren().add(label);

@@ -12,6 +12,7 @@
 import dependencies
  */
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.Set;
 import java.util.TreeSet;
@@ -96,5 +97,12 @@ public class CsvData {
         result = Math.round(result + 1) - 0.5;
 
         return result;
+    }
+
+    public static void deleteFile() {
+        File file = new File(System.getProperty("user.dir")+ "/" + "HistoricalPrices.csv");
+        if (file.exists()) {
+            file.delete();
+        }
     }
 }

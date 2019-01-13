@@ -61,6 +61,7 @@ public class UrlData {
                 file.mkdirs();
                 System.out.println("not exist path");
             } else {
+                System.out.println("Save file to: ");
                 System.out.println(file.getPath());
                 System.out.println(file.getAbsolutePath());
             }
@@ -73,30 +74,44 @@ public class UrlData {
                 URL httpUrl = new URL(url);
 
                 httpURLConnection = (HttpURLConnection) httpUrl.openConnection();
+                httpURLConnection.setConnectTimeout(60000);
+                httpURLConnection.setReadTimeout(60000);
                 httpURLConnection.setRequestMethod("GET");
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setUseCaches(true);
+//                System.out.println(httpURLConnection.getResponseCode());
                 httpURLConnection.connect();
 
-                inputStream = httpURLConnection.getInputStream();
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-                fileOutputStream = new FileOutputStream(System.getProperty("user.dir") + "/" + filename);
-                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+                if (httpURLConnection.getResponseCode() == 200) {
 
-                byte[] bytes = new byte[1024];
-                int length = bufferedInputStream.read(bytes);
+                    inputStream = httpURLConnection.getInputStream();
+                    BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+                    fileOutputStream = new FileOutputStream(System.getProperty("user.dir") + "/" + filename);
+                    BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 
-                while (!Thread.interrupted() && length != -1) {
-                    bufferedOutputStream.write(bytes, 0, length);
-                    length = bufferedInputStream.read(bytes);
+                    byte[] bytes = new byte[1024];
+                    int length = bufferedInputStream.read(bytes);
+
+                    while (!Thread.interrupted() && length != -1) {
+                        bufferedOutputStream.write(bytes, 0, length);
+                        length = bufferedInputStream.read(bytes);
+                    }
+
+                    bufferedOutputStream.close();
+                    bufferedInputStream.close();
+                    errMsg = errMsg + "Internet Connection is OK.\n" +
+                            "But in the Range of DATE for your Selected Ticker has not DATA to Display!\n" +
+                            "Please Select another Range of DATE or another Ticker!\n";
+                } else {
+                    errMsg = errMsg + "Http Response Code: " + httpURLConnection.getResponseCode() + "\n";
                 }
 
-                bufferedOutputStream.close();
-                bufferedInputStream.close();
                 httpURLConnection.disconnect();
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                errMsg = errMsg + "Internet Connection Failed!\n" +
+                        "Please Check your Internet Settings!\n";
             }
         }
     }
