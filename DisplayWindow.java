@@ -16,6 +16,7 @@ public class DisplayWindow extends Stage {
 
         if (UrlData.validation) {
             CsvData.readFile();
+            // in the condition that no data available in the selected range of date
             if (CsvData.TickerData.isEmpty()) {
                 title = "Empty DATA";
 
@@ -28,21 +29,28 @@ public class DisplayWindow extends Stage {
                 );
                 secondPane.getChildren().add(label);
             } else {
-                title = "Display Stock DATA";
+                // in the condition that data has been retrieved from the Internet and not empty
+                // display graphs showing the stock's high, low, opening, closing and volume value for each day
+                // in the range that was entered
+                title = "Display Stock Market DATA";
 
                 width = 1024;
                 height = 768;
 
-                StackPane topPane = new TopPane();
+                // the pane on the top, which contains a button
+                // click the button to show the description and user guide of the graphs
+                // makes it easier for users to understand the representation of graphs
+                StackPane userGuideButtonPane = new UserGuideButtonPane();
+                // these panes display the information retrieved from WSJ
+                // the graph pane displays price (high, low, opening and closing) data for each day
                 StackPane mainChartPane = new MainChartPane("Price Data - " + UrlData.ticker);
+                // the graph pane displays volume data for each day
                 StackPane volumeChartPane = new VolumeChartPane("Volume Data - " + UrlData.ticker);
 
-                secondPane.add(topPane, 0, 0);
+                secondPane.add(userGuideButtonPane, 0, 0);
                 secondPane.add(mainChartPane, 0, 1);
                 secondPane.add(volumeChartPane, 0, 2);
 
-//                mainChartPane.setStyle("-fx-border-color: black");
-//                volumeChartPane.setStyle("-fx-border-color: black");
                 mainChartPane.prefWidthProperty().bind(secondPane.widthProperty());
                 volumeChartPane.prefWidthProperty().bind(secondPane.heightProperty());
 

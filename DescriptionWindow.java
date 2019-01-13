@@ -21,7 +21,7 @@ public class DescriptionWindow extends Stage {
 
         Scene thirdScene = new Scene(descriptionPane, width, height);
 
-        this.setTitle("Description of Diagram");
+        this.setTitle("Description (User Guide) of Diagram");
         this.setScene(thirdScene);
     }
 }

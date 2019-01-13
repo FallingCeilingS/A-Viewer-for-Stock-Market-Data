@@ -12,7 +12,7 @@ public class TickerSelectPane extends FlowPane {
         label.setMinWidth(120);
 
         ChoiceBox<Object> choiceBox = new ChoiceBox<>();
-        choiceBox.setMinWidth(250);
+        choiceBox.setMaxWidth(240);
         TickerOptions.addOptions();
         String[] sortedTickers = TickerOptions.iterOptions();
         choiceBox.setItems(FXCollections.observableArrayList(
