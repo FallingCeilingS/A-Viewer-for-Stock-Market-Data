@@ -21,11 +21,16 @@ import java.util.TreeSet;
  * CsvData class
  */
 public class CsvData {
-    // class instance, store every item of the *.csv file with Set data structure
+    /*
+    declare class instance, TickerData, stores every item of the *.csv file with Set data structure
+     */
     public static Set<DailyTickerData> TickerData;
 
+    /*
+    define class methods
+     */
     /**
-     * class method, read *.csv file
+     * read *.csv file
      * also handle cases where it is missing some values
      */
     public static void readFile() {
@@ -99,6 +104,9 @@ public class CsvData {
         return result;
     }
 
+    /**
+     * delete file when the user re-submit data
+     */
     public static void deleteFile() {
         File file = new File(System.getProperty("user.dir")+ "/" + "HistoricalPrices.csv");
         if (file.exists()) {

@@ -1,8 +1,25 @@
+/**
+ * The class manipulates the URL data.
+ *
+ * @Author: Junxiang Chen
+ * @RegistrationNumber: 180127586
+ * @Email: jchen115@sheffield.ac.uk
+ */
+
+/*
+import dependencies
+ */
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/*
+URLData class
+ */
 public class UrlData {
+    /*
+    declare class variables
+     */
     private static String url1 = "https://quotes.wsj.com/";
     private static String url2 = "/historical-prices/download?MOD_VIEW=page&num_rows=300&startDate=";
     private static String url3 = "&endDate=";
@@ -19,6 +36,15 @@ public class UrlData {
     public static File file;
     public static String filename = "HistoricalPrices.csv";
 
+    /*
+    define class methods
+     */
+
+    /**
+     * parse the string of ticker name, to get the ticker symbol name
+     * @param val String, the value of ticker name
+     * @return String, the ticker symbol name
+     */
     private static String parseTicker(String val) {
         String ticker = "";
         for (int i = 0; i < val.length(); i++) {
@@ -30,6 +56,9 @@ public class UrlData {
         return ticker;
     }
 
+    /**
+     * if the data given by user is valid, concat strings to make an URL
+     */
     public static void setUrl() {
        if (ticker != null && startDate != null && endDate != null) {
            validation = true;
@@ -38,6 +67,10 @@ public class UrlData {
        }
     }
 
+    /**
+     * validate whether the necessary data is all given by users
+     * if any part is invalid input, set relevant error message to remind the user to select again
+     */
     public static void setValidation() {
         errMsg = "";
         if (ticker == null) {
@@ -52,10 +85,17 @@ public class UrlData {
             validation = false;
             errMsg = errMsg + "\n" + errMsgEndDate;
         }
+        errMsg = errMsg + "\n" + "Please close the window and try again!";
     }
 
+    /**
+     * if the URL is valid, retrieve data from the WSJ site
+     * save *.csv file to the classpath
+     */
     public static void saveUrlAs() {
+        // find the classpath
         file = new File(System.getProperty("user.dir"));
+        // if the URL is valid, set http connection
         if (validation) {
             if (!file.exists()) {
                 file.mkdirs();
@@ -73,16 +113,21 @@ public class UrlData {
             try {
                 URL httpUrl = new URL(url);
 
+                // open connection
                 httpURLConnection = (HttpURLConnection) httpUrl.openConnection();
+                // set time out period
                 httpURLConnection.setConnectTimeout(60000);
                 httpURLConnection.setReadTimeout(60000);
+                // set the request method
                 httpURLConnection.setRequestMethod("GET");
+                // set other attributes
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setUseCaches(true);
-//                System.out.println(httpURLConnection.getResponseCode());
+                // connect to the URL
                 httpURLConnection.connect();
 
+                // if the connection is succeed (respond code is 200), download data
                 if (httpURLConnection.getResponseCode() == 200) {
 
                     inputStream = httpURLConnection.getInputStream();
@@ -100,15 +145,25 @@ public class UrlData {
 
                     bufferedOutputStream.close();
                     bufferedInputStream.close();
+
+                    // in this condition, the Internet is connected, so if the data is empty, it must be the reason that
+                    // the user selected date range has no data
+                    // set error message
                     errMsg = errMsg + "Internet Connection is OK.\n" +
                             "But in the Range of DATE for your Selected Ticker has not DATA to Display!\n" +
                             "Please Select another Range of DATE or another Ticker!\n";
                 } else {
+                    // in this case, the Internet connection is fine, but the response is not successful,
+                    // that is, it is not the user's fault
+                    // so the error message is to reveal the response code to the user
                     errMsg = errMsg + "Http Response Code: " + httpURLConnection.getResponseCode() + "\n";
                 }
 
+                // after connection, disconnect to the WSJ site
                 httpURLConnection.disconnect();
             } catch (Exception e) {
+                // in this case, the Internet connection is failed,
+                // so the error message is to remind the user to set the Internet correctly
 //                e.printStackTrace();
                 errMsg = errMsg + "Internet Connection Failed!\n" +
                         "Please Check your Internet Settings!\n";

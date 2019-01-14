@@ -1,3 +1,16 @@
+/**
+ * The class construct the submit pane for submitting user data,
+ * and validate whether the data is sufficient and there has Internet connection.
+ * If it is valid situation, the program will call functions to retrieve data from the Internet.
+ *
+ * @Author: Junxiang Chen
+ * @RegistrationNumber: 180127586
+ * @Email: jchen115@sheffield.ac.uk
+ */
+
+/*
+import dependencies
+ */
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -6,14 +19,24 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * SubmitPane class
+ */
 public class SubmitPane extends FlowPane {
+    // declare member component
     private Button submitButton;
 
+    /**
+     * constructor
+     */
     public SubmitPane() {
+        // construct a button
         submitButton = new Button();
         submitButton.setText("Submit");
+        // add button to the pane
         this.getChildren().add(submitButton);
 
+        // add tooltip for the button
         Tooltip.install(submitButton, new Tooltip("Click Here to Submit your Request.\n" +
                 "MAX RETRIEVE DATA ITEM: 300."));
 
@@ -33,6 +56,7 @@ public class SubmitPane extends FlowPane {
                 // download data from the WSJ Finance server, and store the *.csv file
                 UrlData.saveUrlAs();
 
+                // when displaying the new window, disable the button so that it will not pop up multiple new windows
                 submitButton.setDisable(true);
 
                 // then pop up a window to display relevant message
@@ -40,6 +64,10 @@ public class SubmitPane extends FlowPane {
                 secondStage.show();
 
                 secondStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    /**
+                     * enable the button when then window is closed
+                     * @param event WindowEvent the event that the window is closed
+                     */
                     @Override
                     public void handle(WindowEvent event) {
                         submitButton.setDisable(false);

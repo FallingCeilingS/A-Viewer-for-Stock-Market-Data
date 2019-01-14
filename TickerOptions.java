@@ -1,7 +1,25 @@
+/**
+ * The class stores the collection of ticker options,
+ * and is able to parse tickers' strings to build a correct URL
+ *
+ * @Author: Junxiang Chen
+ * @RegistrationNumber: 180127586
+ * @Email: jchen115@sheffield.ac.uk
+ */
+
+/*
+import dependencies
+ */
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * the constructor function
+ */
 public class TickerOptions {
+    /*
+    declare and define class variables
+     */
     private static String[] tickers = {
             "FOX (U.S.: Nasdaq) - 21st Century Fox Inc. Cl B",
             "AAPL (U.S.: Nasdaq) - Apple Inc.",
@@ -16,12 +34,23 @@ public class TickerOptions {
     };
     public static Set<Ticker> tickerOptions = new TreeSet<>();
 
+    /*
+    define class method
+     */
+
+    /**
+     * add Ticker objects to the TreeSet
+     */
     public static void addOptions() {
         for (String ticker : tickers) {
             tickerOptions.add(new Ticker(ticker));
         }
     }
 
+    /**
+     * get string of each Ticker objects in the tickerOptions object
+     * @return String[] a list of strings
+     */
     public static String[] iterOptions() {
         String[] sortedTickers = new String[tickers.length];
         int index = 0;
