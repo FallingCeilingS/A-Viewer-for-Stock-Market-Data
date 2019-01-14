@@ -41,7 +41,7 @@ public class UserGuideButtonPane extends StackPane {
              */
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("clicked");
+//                System.out.println("clicked");
 
                 // disable the button
                 button.setDisable(true);

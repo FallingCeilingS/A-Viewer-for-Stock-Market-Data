@@ -65,6 +65,7 @@ public class UrlData {
         if (ticker != null && startDate != null && endDate != null) {
             validation = true;
             url = url1 + parseTicker(ticker) + url2 + startDate + url3 + endDate;
+            System.out.println("Request URL:");
             System.out.println(url);
         }
     }
@@ -87,7 +88,6 @@ public class UrlData {
             validation = false;
             errMsg = errMsg + "\n" + errMsgEndDate;
         }
-        errMsg = errMsg + "\n" + "Please close the window and try again!";
     }
 
     /**
