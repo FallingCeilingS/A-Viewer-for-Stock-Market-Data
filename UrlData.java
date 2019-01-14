@@ -9,6 +9,7 @@
 /*
 import dependencies
  */
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -42,6 +43,7 @@ public class UrlData {
 
     /**
      * parse the string of ticker name, to get the ticker symbol name
+     *
      * @param val String, the value of ticker name
      * @return String, the ticker symbol name
      */
@@ -60,11 +62,11 @@ public class UrlData {
      * if the data given by user is valid, concat strings to make an URL
      */
     public static void setUrl() {
-       if (ticker != null && startDate != null && endDate != null) {
-           validation = true;
-           url = url1 + parseTicker(ticker) + url2 + startDate + url3 + endDate;
-           System.out.println(url);
-       }
+        if (ticker != null && startDate != null && endDate != null) {
+            validation = true;
+            url = url1 + parseTicker(ticker) + url2 + startDate + url3 + endDate;
+            System.out.println(url);
+        }
     }
 
     /**

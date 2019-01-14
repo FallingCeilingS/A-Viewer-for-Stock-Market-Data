@@ -11,6 +11,7 @@ public class Ticker implements Comparable<Ticker> {
 
     /**
      * the constructor function
+     *
      * @param ticker String, the string of ticker
      */
     public Ticker(String ticker) {
@@ -19,6 +20,7 @@ public class Ticker implements Comparable<Ticker> {
 
     /**
      * get ticker's name
+     *
      * @return String, the string of ticker
      */
     public String getName() {
@@ -27,6 +29,7 @@ public class Ticker implements Comparable<Ticker> {
 
     /**
      * compare and set the order of each item by the start of the word
+     *
      * @param o Ticker, contain sigle ticker data
      * @return int, the order symbol
      */

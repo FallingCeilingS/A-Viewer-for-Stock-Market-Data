@@ -11,6 +11,7 @@
 /*
 import dependencies
  */
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -29,6 +30,7 @@ public class CsvData {
     /*
     define class methods
      */
+
     /**
      * read *.csv file
      * also handle cases where it is missing some values
@@ -74,6 +76,7 @@ public class CsvData {
 
     /**
      * set lower bound of the diagram
+     *
      * @return Double, the value of lower bound
      */
     public static Double setLowerBound() {
@@ -90,6 +93,7 @@ public class CsvData {
 
     /**
      * set upper bound of the diagram
+     *
      * @return Double, the value of upper bound
      */
     public static Double setUpperBound() {
@@ -108,7 +112,7 @@ public class CsvData {
      * delete file when the user re-submit data
      */
     public static void deleteFile() {
-        File file = new File(System.getProperty("user.dir")+ "/" + "HistoricalPrices.csv");
+        File file = new File(System.getProperty("user.dir") + "/" + "HistoricalPrices.csv");
         if (file.exists()) {
             file.delete();
         }

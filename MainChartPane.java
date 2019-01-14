@@ -10,6 +10,7 @@
 /*
 import dependencies
  */
+
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
@@ -36,6 +37,7 @@ public class MainChartPane extends StackPane {
 
     /**
      * the constructor function
+     *
      * @param title Sting, the title of the chart
      */
     public MainChartPane(String title) {
@@ -99,6 +101,7 @@ public class MainChartPane extends StackPane {
     /*
     define member methods
      */
+
     /**
      * set x axis
      */

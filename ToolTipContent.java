@@ -9,6 +9,7 @@
 /*
 import dependencies
  */
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -29,6 +30,7 @@ class ToolTipContent extends GridPane {
 
     /**
      * the constructor function
+     *
      * @param yText String, the text in the left of value
      */
     public ToolTipContent(String yText) {
@@ -47,9 +49,9 @@ class ToolTipContent extends GridPane {
         // set style of labels
         String labelStyle =
                 "-fx-font-size: 0.75em;\n" +
-                "-fx-font-weight: bold;\n" +
-                "-fx-text-fill: #666666;\n" +
-                "-fx-padding: 2 5 2 0;";
+                        "-fx-font-weight: bold;\n" +
+                        "-fx-text-fill: #666666;\n" +
+                        "-fx-padding: 2 5 2 0;";
         date.setStyle(labelStyle);
         yLabel.setStyle(labelStyle);
         // add components to the pane
@@ -59,10 +61,12 @@ class ToolTipContent extends GridPane {
     /*
     define instant methods
      */
+
     /**
      * update values of the pane every time the user's mouse hovers a symbol
+     *
      * @param date String, the date
-     * @param val Number, the relative value with regard to the pane
+     * @param val  Number, the relative value with regard to the pane
      * @throws ParseException the exception of the error
      */
     public void update(String date, Number val) throws ParseException {

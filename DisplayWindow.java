@@ -10,6 +10,7 @@
 /*
 import dependencies
  */
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -46,8 +47,8 @@ public class DisplayWindow extends Stage {
                 // either by no Internet connection or no relevant data in the selected date range for specific Ticker
                 label = new Label(
                         "No Data to Display! Due to: \n" +
-                        UrlData.errMsg +
-                        "Please CLOSE this WINDOW and TRY AGAIN!"
+                                UrlData.errMsg +
+                                "Please CLOSE this WINDOW and TRY AGAIN!"
                 );
                 // add label to the pane
                 secondPane.getChildren().add(label);

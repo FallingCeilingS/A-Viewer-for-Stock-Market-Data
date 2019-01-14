@@ -11,6 +11,7 @@
 /*
 import dependencies
  */
+
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -93,6 +94,7 @@ public class DatePickerPane extends FlowPane {
     /*
     define internal methods
      */
+
     /**
      * set a StringConverter type converter
      * convert string to the date format using specific pattern,

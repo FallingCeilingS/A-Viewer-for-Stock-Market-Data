@@ -9,6 +9,7 @@
 /*
 import dependencies
  */
+
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
@@ -34,6 +35,7 @@ public class VolumeChartPane extends StackPane {
 
     /**
      * the constructor function
+     *
      * @param title String, the title of the pane
      */
     public VolumeChartPane(String title) {

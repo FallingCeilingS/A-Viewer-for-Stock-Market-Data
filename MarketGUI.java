@@ -2,7 +2,7 @@
  * This class is the main class of the whole program.
  * Design and build a viewer for stock market data.
  * The viewer download the data from the internet and present it to the user via a GUI.
- *
+ * <p>
  * When the program starts, a window displays with drop down boxes containing 10 ticker symbols for the
  * user to select a ticker symbol from a list, and select the start and end dates using drop down
  * calendars for the years, months and days. When the user has selected the dates and ticker
@@ -14,7 +14,7 @@
  * and there is good Internet connection, and the range of date in the ticker symbol has data, this window
  * should display a graph showing the stock’s closing value for each day in the range that
  * was entered.
- *
+ * <p>
  * Additionally, if the user click the button "Description (User Guide) of Diagram", it will pop up
  * a new window to display the description of the graph for better understanding the diagram.
  *
@@ -26,6 +26,7 @@
 /*
 import dependencies
  */
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
