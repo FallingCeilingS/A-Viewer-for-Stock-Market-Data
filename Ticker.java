@@ -11,7 +11,7 @@ public class Ticker implements Comparable<Ticker> {
 
     /**
      * the constructor function
-     * @param ticker String the string of ticker
+     * @param ticker String, the string of ticker
      */
     public Ticker(String ticker) {
         this.ticker = ticker;
@@ -19,7 +19,7 @@ public class Ticker implements Comparable<Ticker> {
 
     /**
      * get ticker's name
-     * @return String the string of ticker
+     * @return String, the string of ticker
      */
     public String getName() {
         return ticker;
@@ -27,8 +27,8 @@ public class Ticker implements Comparable<Ticker> {
 
     /**
      * compare and set the order of each item by the start of the word
-     * @param o Ticker object
-     * @return int the order symbol
+     * @param o Ticker, contain sigle ticker data
+     * @return int, the order symbol
      */
     @Override
     public int compareTo(Ticker o) {

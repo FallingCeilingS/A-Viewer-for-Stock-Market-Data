@@ -31,7 +31,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * the constructor function
-     * @param item String[] an item parsed from *.csv file
+     * @param item String[], an item parsed from *.csv file
      * @throws ParseException the exception that parse error
      */
     public DailyTickerData(String[] item) throws ParseException {
@@ -54,10 +54,9 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
     /*
     define instance methods
      */
-
     /**
      * get date in String format
-     * @return String date in "MM/dd/yyyy" format
+     * @return String, date in "MM/dd/yyyy" format
      */
     public String getDateString() {
         return this.date;
@@ -65,7 +64,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * get the stock price at the start of the day
-     * @return Double the opening price data
+     * @return Double, the opening price data
      */
     public Double getOpen() {
         return this.open;
@@ -73,7 +72,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * get the lowest price the stock reached during the day
-     * @return Double the lowest price of the day
+     * @return Double, the lowest price of the day
      */
     public Double getLow() {
         return this.low;
@@ -81,7 +80,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * the highest price the stock reached during the day
-     * @return Double the highest price of the day
+     * @return Double, the highest price of the day
      */
     public Double getHigh() {
         return this.high;
@@ -89,7 +88,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * get the stock price at the end of the day
-     * @return Double the closing price of the day
+     * @return Double, the closing price of the day
      */
     public Double getClose() {
         return this.close;
@@ -97,7 +96,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * get the number of shares traded that day
-     * @return Long the volume of shares traded of the day
+     * @return Long, the volume of shares traded of the day
      */
     public Long getVolume() {
         return this.volume;
@@ -105,7 +104,7 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * get the boolean that whether the stock increased in the day
-     * @return boolean
+     * @return boolean, show that whether the stock increased in the day
      */
     public boolean getIsIncrease() {
         return this.isIncrease;
@@ -113,8 +112,8 @@ public class DailyTickerData implements Comparable<DailyTickerData> {
 
     /**
      * compare and set the order of each item by the date
-     * @param o DailyTickerData object
-     * @return int the order symbol
+     * @param o DailyTickerData, the object that contains single data
+     * @return int, the order symbol
      */
     @Override
     public int compareTo(DailyTickerData o) {

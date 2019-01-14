@@ -37,7 +37,6 @@ public class TickerOptions {
     /*
     define class method
      */
-
     /**
      * add Ticker objects to the TreeSet
      */
@@ -49,7 +48,7 @@ public class TickerOptions {
 
     /**
      * get string of each Ticker objects in the tickerOptions object
-     * @return String[] a list of strings
+     * @return String[], a list of strings
      */
     public static String[] iterOptions() {
         String[] sortedTickers = new String[tickers.length];

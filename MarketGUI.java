@@ -44,7 +44,7 @@ public class MarketGUI extends Application {
 
     /**
      * main function
-     * @param args String[] default argument in main function
+     * @param args String[], default argument in main function
      */
     public static void main(String[] args) {
         System.out.println("execution");
@@ -55,7 +55,7 @@ public class MarketGUI extends Application {
 
     /**
      * when the program starts, display a window with dropdown boxes
-     * @param primaryStage the first stage displayed when the program starts
+     * @param primaryStage Stage, the first stage displayed when the program starts
      * @throws Exception the exception of the program
      */
     @Override

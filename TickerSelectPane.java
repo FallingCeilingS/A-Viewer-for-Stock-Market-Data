@@ -52,9 +52,9 @@ public class TickerSelectPane extends FlowPane {
         choiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
             /**
              * an event listener to listen to changes that the user makes
-             * @param observable ObservableValue object
-             * @param oldValue Object the previous value that the user selected
-             * @param newValue Object the current value that the user selected
+             * @param observable ObservableValue, the object contains observable data
+             * @param oldValue Object, the previous value that the user selected
+             * @param newValue Object, the current value that the user selected
              */
             @Override
             public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {

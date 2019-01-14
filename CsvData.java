@@ -74,7 +74,7 @@ public class CsvData {
 
     /**
      * set lower bound of the diagram
-     * @return Double the value of lower bound
+     * @return Double, the value of lower bound
      */
     public static Double setLowerBound() {
         double result = TickerData.iterator().next().getLow();
@@ -90,7 +90,7 @@ public class CsvData {
 
     /**
      * set upper bound of the diagram
-     * @return Double the value of upper bound
+     * @return Double, the value of upper bound
      */
     public static Double setUpperBound() {
         double result = TickerData.iterator().next().getHigh();

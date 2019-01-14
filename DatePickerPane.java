@@ -93,7 +93,6 @@ public class DatePickerPane extends FlowPane {
     /*
     define internal methods
      */
-
     /**
      * set a StringConverter type converter
      * convert string to the date format using specific pattern,

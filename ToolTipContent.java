@@ -29,7 +29,7 @@ class ToolTipContent extends GridPane {
 
     /**
      * the constructor function
-     * @param yText String the text in the left of value
+     * @param yText String, the text in the left of value
      */
     public ToolTipContent(String yText) {
         /*
@@ -59,11 +59,10 @@ class ToolTipContent extends GridPane {
     /*
     define instant methods
      */
-
     /**
      * update values of the pane every time the user's mouse hovers a symbol
-     * @param date String the date
-     * @param val Number the relative value with regard to the pane
+     * @param date String, the date
+     * @param val Number, the relative value with regard to the pane
      * @throws ParseException the exception of the error
      */
     public void update(String date, Number val) throws ParseException {

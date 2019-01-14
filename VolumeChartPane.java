@@ -249,7 +249,7 @@ public class VolumeChartPane extends StackPane {
                 d.getNode().setOnMouseExited(new EventHandler<MouseEvent>() {
                     /**
                      * set the style of symbol to change when the mouse leaves the point
-                     * @param event MouseEvent the mouse event of leave
+                     * @param event MouseEvent, the mouse event of leave
                      */
                     @Override
                     public void handle(MouseEvent event) {

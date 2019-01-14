@@ -36,7 +36,7 @@ public class MainChartPane extends StackPane {
 
     /**
      * the constructor function
-     * @param title the title of the chart
+     * @param title Sting, the title of the chart
      */
     public MainChartPane(String title) {
         /*
@@ -99,7 +99,6 @@ public class MainChartPane extends StackPane {
     /*
     define member methods
      */
-
     /**
      * set x axis
      */
@@ -296,7 +295,7 @@ public class MainChartPane extends StackPane {
                     d.getNode().setOnMouseEntered(new EventHandler<MouseEvent>() {
                         /**
                          * set the style of symbol to change when the mouse hovers the point
-                         * @param event MouseEvent the mouse event of hover
+                         * @param event MouseEvent, the mouse event of hover
                          */
                         @Override
                         public void handle(MouseEvent event) {
@@ -308,7 +307,7 @@ public class MainChartPane extends StackPane {
                     d.getNode().setOnMouseExited(new EventHandler<MouseEvent>() {
                         /**
                          * set the style of symbol to change when the mouse leaves the point
-                         * @param event MouseEvent the mouse event of leave
+                         * @param event MouseEvent, the mouse event of leave
                          */
                         @Override
                         public void handle(MouseEvent event) {
@@ -324,7 +323,7 @@ public class MainChartPane extends StackPane {
                     d.getNode().setOnMouseEntered(new EventHandler<MouseEvent>() {
                         /**
                          * set the style of symbol to change when the mouse hovers the point
-                         * @param event MouseEvent the mouse event
+                         * @param event MouseEvent, the mouse event
                          */
                         @Override
                         public void handle(MouseEvent event) {
@@ -336,7 +335,7 @@ public class MainChartPane extends StackPane {
                     d.getNode().setOnMouseExited(new EventHandler<MouseEvent>() {
                         /**
                          * set the style of symbol to change when the mouse leaves the point
-                         * @param event MouseEvent the mouse event
+                         * @param event MouseEvent, the mouse event
                          */
                         @Override
                         public void handle(MouseEvent event) {
