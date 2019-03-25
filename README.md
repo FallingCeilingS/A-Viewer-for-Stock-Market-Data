@@ -1,2 +1,2 @@
-# COM6516_assignment
-Final Assignment of COM6516
+# A Viewer for Stock Market Data
+Retrieve Data from Wall Street Journal.
