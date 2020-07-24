@@ -21,17 +21,17 @@ public class UrlData {
     /*
     declare class variables
      */
-    private static String url1 = "https://quotes.wsj.com/";
-    private static String url2 = "/historical-prices/download?MOD_VIEW=page&num_rows=300&startDate=";
-    private static String url3 = "&endDate=";
+    private static final String url1 = "https://quotes.wsj.com/";
+    private static final String url2 = "/historical-prices/download?MOD_VIEW=page&num_rows=300&startDate=";
+    private static final String url3 = "&endDate=";
     public static String ticker;
     public static String startDate;
     public static String endDate;
     public static boolean validation = false;
     public static String url;
-    private static String errMsgTicker = "Invalid Input of Ticker. Please Select a Ticker!";
-    private static String errMsgStartDate = "Invalid Input of Start Date. Please Select a Date!";
-    private static String errMsgEndDate = "Invalid Input of End Date. Please Select a Date!";
+    private static final String errMsgTicker = "Invalid Input of Ticker. Please Select a Ticker!";
+    private static final String errMsgStartDate = "Invalid Input of Start Date. Please Select a Date!";
+    private static final String errMsgEndDate = "Invalid Input of End Date. Please Select a Date!";
     public static String errMsg = "";
 
     public static File file;
