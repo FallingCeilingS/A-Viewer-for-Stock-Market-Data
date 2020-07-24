@@ -1,14 +1,16 @@
 # A Viewer for Stock Market Data
 This is a Java project that retrieves stock price data for a ticker from Wall Street Journal and visualise data in the UI.
 
-#### **Screenshot of the demo**
+### **Screenshot of the demo**
 
 ![Demo](/pics/Screenshot%20Demo.png)
 
 The project is implemented with Core Libraries of [Java 1.8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html), including [JavaFX](https://www.oracle.com/java/technologies/javase/javafx-overview.html). 
 Please make sure the correct version of Java SDK to consume the product.
 
-#### **How to consume the project**
+---
+
+### **How to consume the project**
 
 The main class of the project called [`MarketGUI.java`](MarketGUI.java).
 To begin with, you need to compile the project using the following command in the terminal:
@@ -20,7 +22,9 @@ Then, use the following command to start the project:
 java MarketGUI
 ```
 
-#### **Introduction**
+---
+
+### **Introduction**
 
 When the program starts, a dialog should be displayed as below:
 
@@ -51,7 +55,9 @@ The window is responsive. User is able to interact with the diagram:
 - By clicking the top button "User Guide", a user guide dialog will pop up to inform user how to parse the data from the diagram.
 - By hovering over the dots on the diagram, the user is able to check the date and price of the open and close prices.
 
-#### **Limitations**
+---
+
+### **Limitations**
 
 - The user can only select specific tickers from the drop-down menu.
 - Due to the limitation of the endpoint of WSJ, only 5 days data will be retrived.
