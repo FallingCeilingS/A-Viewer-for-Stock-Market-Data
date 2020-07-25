@@ -43,17 +43,23 @@ There are some restrictions regarding user input before hitting the "Submit" but
 Otherwise, a dialog will pop up to show error message, and the query process will not be able to proceed.
 
 If the input fields are valid, and the internet is connected, the endpoint provided by WSJ will be hit. Then, data retrieved from the API should be displayed in a separate window. 
-This window draws a graph showing the ticker data within the selected date range:
-- The stock’s open and closing values for each day with the deep or light grey lines.
-- The stock's high and low value for each day with red or green bars.
-- The horizontal axis shows dates, and the vertical axis shows stock prices.
+This window draws two graphs showing the ticker data within the selected date range:
+- The stock’s open and closing values for each day displays via the deep or light grey lines in the upper diagram.
+- The stock's high and low value for each day displays via red or green bars in the upper diagram.
+- The stock's trade volume for each day displays yellow area in the lower diagram.
+- The horizontal axis represents dates, the vertical axis in the upper diagram shows stock prices, while the vertical axis in the lower diagram shows stock trade volume.
+
+The UI:
 
 ![Demo](/pics/Screenshot%20Demo.png)
+
+The diagram discription:
+
 ![Description](banner-sample.png)
 
 The window is responsive. User is able to interact with the diagram:
 - By clicking the top button "User Guide", a user guide dialog will pop up to inform user of how to parse the data from the diagram.
-- By hovering over the dots on the diagram, the user is able to check the date and the open and close prices.
+- By hovering over the dots on the diagram, the user is able to check the date and the open and close prices and the volume of the stock trading.
 
 ---
 
