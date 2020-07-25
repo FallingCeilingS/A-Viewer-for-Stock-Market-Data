@@ -37,23 +37,23 @@ This dialog is consist of input components for user to query specific market dat
 
 There are some restrictions regarding user input before hitting the "Submit" button:
 - All input fields should not be empty.
-- The start date cannot be ahead of the end date.
-- The device should connect to the internet.
+- The start date cannot be ahead of the end date, and the end date cannot be behind the start date.
+- The device should connect to the internet to hit the WSJ endpoint.
 
 Otherwise, a dialog will pop up to show error message, and the query process will not be able to proceed.
 
 If the input fields are valid, and the internet is connected, the endpoint provided by WSJ will be hit. Then, data retrieved from the API should be displayed in a separate window. 
 This window draws a graph showing the ticker data within the selected date range:
-- The stock’s open, closing values for each day in the grey line chats.
-- The stock's high and low value for each day in the rectangles.
-- The horizontal coordinate shows dates, and the vertical coordinate shows stock prices.
+- The stock’s open and closing values for each day with the deep or light grey lines.
+- The stock's high and low value for each day with red or green bars.
+- The horizontal axis shows dates, and the vertical axis shows stock prices.
 
 ![Demo](/pics/Screenshot%20Demo.png)
 ![Description](banner-sample.png)
 
 The window is responsive. User is able to interact with the diagram:
-- By clicking the top button "User Guide", a user guide dialog will pop up to inform user how to parse the data from the diagram.
-- By hovering over the dots on the diagram, the user is able to check the date and price of the open and close prices.
+- By clicking the top button "User Guide", a user guide dialog will pop up to inform user of how to parse the data from the diagram.
+- By hovering over the dots on the diagram, the user is able to check the date and the open and close prices.
 
 ---
 
