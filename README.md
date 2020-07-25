@@ -31,7 +31,7 @@ When the program starts, a dialog should be displayed as below:
 ![Dialog](/pics/Screenshot%20Dialog.png)
 
 This dialog is consist of input components for user to query specific market data for a ticker, including:
-- A drop-down box for selecting a ticker symbol from a list
+- A drop-down box for selecting a ticker symbol from a list.
 - Two drop-down boxes for selecting the start and end dates respectively. 
 - A submission button that allows user to submit input data to retrieve correspond stock market data.
 
