@@ -3,7 +3,7 @@ This is a Java project that retrieves stock price data for a ticker from Wall St
 
 ### **Screenshot of the demo**
 
-![Demo](/pics/Screenshot%20Demo.png)
+![Demo](/pics/screenshot-demo.png)
 
 The project is implemented with Core Libraries of [Java 1.8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html), including [JavaFX](https://www.oracle.com/java/technologies/javase/javafx-overview.html). 
 Please make sure the correct version of Java SDK to consume the product.
@@ -28,7 +28,7 @@ java MarketGUI
 
 When the program starts, a dialog should be displayed as below:
 
-![Dialog](/pics/Screenshot%20Dialog.png)
+![Dialog](/pics/screenshot-dialog.png)
 
 This dialog is consist of input components for user to query specific market data for a ticker, including:
 - A drop-down box for selecting a ticker symbol from a list.
@@ -51,7 +51,7 @@ This window draws two graphs showing the ticker data within the selected date ra
 
 The UI:
 
-![Demo](/pics/Screenshot%20Demo.png)
+![Demo](/pics/screenshot-demo.png)
 
 The diagram discription:
 
